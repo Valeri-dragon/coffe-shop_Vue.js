@@ -7,7 +7,7 @@
                        <nav-bar-component />
                     </div>
                 </div>
-                <h1 class="title-big">Contact us</h1>
+                <title-item :title='title'/>
             </div>
         </div>
         <section class="contacts">
@@ -79,3 +79,13 @@
        <footer-component />
     </main>
 </template>
+<script>
+import TitleItem from "@/components/TitleItem.vue"
+
+export default {
+    components: {TitleItem},
+    data() {
+        return {title:'Contact us',}
+    },
+}
+</script>

@@ -9,7 +9,7 @@
         </div>
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
-            <h1 class="title-big">Everything You Love About Coffee</h1>
+            <title-item :title="title"/>
             <img
               class="beanslogo"
               src="@/assets/logo/Beans_logo.svg"
@@ -19,7 +19,9 @@
               We makes every day full of energy and taste
             </div>
             <div class="preview__subtitle">Want to try our beans?</div>
-            <router-link to="/our-coffee" class="preview__btn">More</router-link>
+            <router-link to="/our-coffee" class="preview__btn"
+              >More</router-link
+            >
           </div>
         </div>
       </div>
@@ -59,10 +61,28 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
-              <product-card />
-              <product-card />
-              <product-card />
-              </div>
+              <product-card
+              ClassItem="best__item"
+                :name="bestSellers[0].name"
+                :price="bestSellers[0].price"
+                :country="bestSellers[0].country"
+                :img="bestSellers[0].icon"
+              />
+              <product-card
+              ClassItem="best__item"
+                :name="bestSellers[1].name"
+                :price="bestSellers[1].price"
+                :country="bestSellers[1].country"
+                :img="bestSellers[1].icon"
+              />
+              <product-card
+              ClassItem="best__item"
+                :name="bestSellers[2].name"
+                :price="bestSellers[2].price"
+                :country="bestSellers[2].country"
+                :img="bestSellers[2].icon"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -71,32 +91,37 @@
   </main>
 </template>
 <script>
-
 import ProductCard from "@/components/ProductCard.vue";
+
+import TitleItem from '@/components/TitleItem.vue';
 export default {
   components: {
-    ProductCard,
+    ProductCard, TitleItem
   },
-  data(){
+  data() {
     return {
-      card:[
-        {id:0,
-        icon:'coffee-1.jpg',
-        title: 'Solimo Coffee Beans 2kg',
-        price: 10.73 + '$'
+      title:'Everything You Love About Coffee',
+      bestSellers: [
+        {
+          id: 0,
+          icon: "coffee-1.jpg",
+          name: "Solimo Coffee Beans 2kg",
+          price: 10.73,
         },
-         {id:1,
-        icon:'coffee-2.jpg',
-        title: 'Presto Coffee Beans 1kg',
-        price: 15.99 + '$'
+        {
+          id: 1,
+          icon: "coffee-2.jpg",
+          name: "Presto Coffee Beans 1kg",
+          price: 15.99,
         },
-         {id:2,
-        icon:'coffee-3.jpg',
-        title: 'AROMISTICO Coffee 1kg',
-        price: 6.99 + '$'
-        }
-      ]
-    }
-  }
+        {
+          id: 2,
+          icon: "coffee-3.jpg",
+          name: "AROMISTICO Coffee 1kg",
+          price: 6.99,
+        },
+      ],
+    };
+  },
 };
-  </script>
+</script>

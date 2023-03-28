@@ -7,14 +7,18 @@
             <nav-bar-component />
           </div>
         </div>
-        <h1 class="title-big">Our Coffee</h1>
+        <title-item :title="title"/>
       </div>
     </div>
     <section class="shop">
       <div class="container">
         <div class="row">
           <div class="col-lg-4 offset-2">
-            <img class="shop__girl" src="@/assets/img/coffee_girl.jpg" alt="girl" />
+            <img
+              class="shop__girl"
+              src="@/assets/img/coffee_girl.jpg"
+              alt="girl"
+            />
           </div>
           <div class="col-lg-4">
             <div class="title">About our beans</div>
@@ -65,12 +69,48 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
-              <product-card />
-              <product-card />
-              <product-card />
-              <product-card />
-              <product-card />
-              <product-card />
+              <product-card
+               ClassItem="shop__item"
+                :name="coffee[0].name"
+                :price="coffee[0].price"
+                :country="coffee[0].country"
+                :img="coffee[0].icon"
+              />
+              <product-card
+               ClassItem="shop__item"
+                :name="coffee[1].name"
+                :price="coffee[1].price"
+                :country="coffee[1].country"
+                :img="coffee[1].icon"
+              />
+              <product-card
+                ClassItem="shop__item"
+                :name="coffee[2].name"
+                :price="coffee[2].price"
+                :country="coffee[2].country"
+                :img="coffee[2].icon"
+              />
+              <product-card
+                ClassItem="shop__item"
+                :name="coffee[3].name"
+                :price="coffee[3].price"
+                :country="coffee[3].country"
+                :img="coffee[3].icon"
+              />
+              <product-card
+                ClassItem="shop__item"
+                :name="coffee[4].name"
+                :price="coffee[4].price"
+                :country="coffee[4].country"
+                :img="coffee[4].icon"
+              />
+              <product-card
+                ClassItem="shop__item"
+                :name="coffee[5].name"
+                :price="coffee[5].price"
+                :country="coffee[5].country"
+                :img="coffee[5].icon"
+              />
             </div>
           </div>
         </div>
@@ -80,53 +120,60 @@
   </main>
 </template>
 <script>
-
 import ProductCard from "@/components/ProductCard.vue";
+import TitleItem from '@/components/TitleItem.vue';
 export default {
   components: {
-      ProductCard,
+    ProductCard, TitleItem
   },
-   data(){
+  data() {
     return {
-      card:[
-        {id:0,
-        icon:'coffee-3.jpg',
-        title: 'Solimo Coffee Beans 2kg',
-        country: 'Brazil',
-        price: 10.73 + '$'
+      title:'Our Coffee',
+      coffee: [
+        {
+          id: 0,
+          icon: "coffee-3.jpg",
+          name: "Solimo Coffee Beans 2kg",
+          country: "Brazil",
+          price: 10.73,
         },
-         {id:1,
-        icon:'coffee-3.jpg',
-        title: 'Presto Coffee Beans 1kg',
-        country: 'Brazil',
-        price: 15.99 + '$'
+        {
+          id: 1,
+          icon: "coffee-3.jpg",
+          name: "Presto Coffee Beans 1kg",
+          country: "Brazil",
+          price: 15.99,
         },
-         {id:2,
-        icon:'coffee-3.jpg',
-        title: 'AROMISTICO Coffee 1kg',
-        country: 'Brazil',
-        price: 6.99 + '$'
+        {
+          id: 2,
+          icon: "coffee-3.jpg",
+          name: "AROMISTICO Coffee 1kg",
+          country: "Brazil",
+          price: 6.99,
         },
-          {id:3,
-        icon:'coffee-3.jpg',
-        title: 'Solimo Coffee Beans 2kg',
-        country: 'Brazil',
-        price: 10.73 + '$'
+        {
+          id: 3,
+          icon: "coffee-3.jpg",
+          name: "Solimo Coffee Beans 2kg",
+          country: "Brazil",
+          price: 10.73,
         },
-         {id:4,
-        icon:'coffee-3.jpg',
-        title: 'Presto Coffee Beans 1kg',
-        country: 'Brazil',
-        price: 15.99 + '$'
+        {
+          id: 4,
+          icon: "coffee-3.jpg",
+          name: "Presto Coffee Beans 1kg",
+          country: "Brazil",
+          price: 15.99,
         },
-         {id:5,
-        icon:'coffee-3.jpg',
-        title: 'AROMISTICO Coffee 1kg',
-        country: 'Brazil',
-        price: 6.99 + '$'
-        }
-      ]
-    }
-  }
+        {
+          id: 5,
+          icon: "coffee-3.jpg",
+          name: "AROMISTICO Coffee 1kg",
+          country: "Brazil",
+          price: 6.99,
+        },
+      ],
+    };
+  },
 };
 </script>
