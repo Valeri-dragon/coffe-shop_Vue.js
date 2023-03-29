@@ -3,15 +3,15 @@
     <ul
       class="header d-flex justify-content-center justify-content-md-start flex-wrap"
     >
-      <li class="header__item">
-        <router-link :to="links.header.link">
-          <img
+        <nav-item
+          :link="links.header.link"
+          classItem="header__item"
+          >
+              <img
             :src="require(`@/assets/logo/${links.header.icon}`)"
             :alt="links.header.icon.substring(0, links.header.icon.length - 4)"
           />
-        </router-link>
-      </li>
-         
+             </nav-item>
       <nav-item v-for="link in links.other"
       :key="link.id"
      classItem="header__item"

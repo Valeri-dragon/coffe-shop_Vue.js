@@ -4,14 +4,15 @@
       <div class="row">
         <div class="col-lg-6 offset-lg-3">
           <ul class="footer d-flex flex-wrap">
-            <li class="footer__item">
-              <router-link :to="links.footer.link">
-                <img
-                  :src="require(`@/assets/logo/${links.footer.icon}`)"
-                  :alt="links.footer.icon.substring(0, links.footer.icon.length - 4)"
-                />
-              </router-link>
-            </li>
+            <nav-item
+          :link="links.footer.link"
+          classItem="footer__item"
+          >
+              <img
+            :src="require(`@/assets/logo/${links.footer.icon}`)"
+            :alt="links.footer.icon.substring(0, links.footer.icon.length - 4)"
+          />
+             </nav-item>
 
             <nav-item
             v-for="link in links.other"
