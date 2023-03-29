@@ -4,29 +4,21 @@
       class="header d-flex justify-content-center justify-content-md-start flex-wrap"
     >
       <li class="header__item">
-        <router-link :to="links[0].link">
+        <router-link :to="links.header.link">
           <img
-            :src="require(`@/assets/logo/${links[0].icon}`)"
-            :alt="links[0].icon.substring(0, links[0].icon.length - 4)"
+            :src="require(`@/assets/logo/${links.header.icon}`)"
+            :alt="links.header.icon.substring(0, links.header.icon.length - 4)"
           />
         </router-link>
       </li>
          
-      <nav-item 
+      <nav-item v-for="link in links.other"
+      :key="link.id"
      classItem="header__item"
-     :link="links[1].link"
-     :text="links[1].text"
+     :link="link.link"
+      :text="link.text"
      />
-      <nav-item 
-     classItem="header__item"
-     :link="links[2].link"
-     :text="links[2].text"
-     />
-      <nav-item 
-     classItem="header__item"
-     :link="links[3].link"
-     :text="links[3].text"
-     />
+     
     </ul>
   </header>
 </template>
@@ -37,12 +29,15 @@ export default {
   components: {NavItem},
   data() {
     return {
-      links: [
-        {
+      links: {
+        header:{
           id: 0,
           link: "/",
           icon: "Logo.svg",
         },
+        
+        other:[
+        
         {
           id: 1,
           text: "Our coffee",
@@ -58,7 +53,7 @@ export default {
           text: "Contact us",
           link: "/contacts",
         },
-      ],
+      ]},
     };
   },
 };

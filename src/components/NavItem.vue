@@ -16,7 +16,7 @@ export default {
     },
      classItem:{
 type: String,
-required: false,
+required: true,
     },
   },
 }

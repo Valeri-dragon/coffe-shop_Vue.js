@@ -61,27 +61,15 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
-              <product-card
+              <product-card v-for='bestSeller in bestSellers'
+              :key="bestSeller.id"
               ClassItem="best__item"
-                :name="bestSellers[0].name"
-                :price="bestSellers[0].price"
-                :country="bestSellers[0].country"
-                :img="bestSellers[0].icon"
+                :name="bestSeller.name"
+                :price="bestSeller.price"
+                :country="bestSeller.country"
+                :img="bestSeller.icon"
               />
-              <product-card
-              ClassItem="best__item"
-                :name="bestSellers[1].name"
-                :price="bestSellers[1].price"
-                :country="bestSellers[1].country"
-                :img="bestSellers[1].icon"
-              />
-              <product-card
-              ClassItem="best__item"
-                :name="bestSellers[2].name"
-                :price="bestSellers[2].price"
-                :country="bestSellers[2].country"
-                :img="bestSellers[2].icon"
-              />
+              
             </div>
           </div>
         </div>

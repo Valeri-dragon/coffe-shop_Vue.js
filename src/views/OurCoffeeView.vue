@@ -69,48 +69,15 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
-              <product-card
+              <product-card v-for="coffe in coffee"
+              :key="coffe.id"
                ClassItem="shop__item"
-                :name="coffee[0].name"
-                :price="coffee[0].price"
-                :country="coffee[0].country"
-                :img="coffee[0].icon"
+                :name="coffe.name"
+                :price="coffe.price"
+                :country="coffe.country"
+                :img="coffe.icon"
               />
-              <product-card
-               ClassItem="shop__item"
-                :name="coffee[1].name"
-                :price="coffee[1].price"
-                :country="coffee[1].country"
-                :img="coffee[1].icon"
-              />
-              <product-card
-                ClassItem="shop__item"
-                :name="coffee[2].name"
-                :price="coffee[2].price"
-                :country="coffee[2].country"
-                :img="coffee[2].icon"
-              />
-              <product-card
-                ClassItem="shop__item"
-                :name="coffee[3].name"
-                :price="coffee[3].price"
-                :country="coffee[3].country"
-                :img="coffee[3].icon"
-              />
-              <product-card
-                ClassItem="shop__item"
-                :name="coffee[4].name"
-                :price="coffee[4].price"
-                :country="coffee[4].country"
-                :img="coffee[4].icon"
-              />
-              <product-card
-                ClassItem="shop__item"
-                :name="coffee[5].name"
-                :price="coffee[5].price"
-                :country="coffee[5].country"
-                :img="coffee[5].icon"
-              />
+              
             </div>
           </div>
         </div>

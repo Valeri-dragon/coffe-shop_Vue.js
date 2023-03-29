@@ -7,7 +7,7 @@
             <nav-bar-component />
           </div>
         </div>
-        <title-item :title="title"/>
+        <title-item :title="title" />
       </div>
     </div>
     <section class="shop">
@@ -49,47 +49,15 @@
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
               <product-card
+                v-for="good in goods"
+                :key="good.id"
                 ClassItem="shop__item"
-                :name="goods[0].name"
-                :price="goods[0].price"
-                :country="goods[0].country"
-                :img="goods[0].icon"
+                :name="good.name"
+                :price="good.price"
+                :country="good.country"
+                :img="good.icon"
               />
-              <product-card
-                ClassItem="shop__item"
-                :name="goods[1].name"
-                :price="goods[1].price"
-                :country="goods[1].country"
-                :img="goods[1].icon"
-              />
-              <product-card
-                ClassItem="shop__item"
-                :name="goods[2].name"
-                :price="goods[2].price"
-                :country="goods[2].country"
-                :img="goods[2].icon"
-              />
-              <product-card
-                ClassItem="shop__item"
-                :name="goods[3].name"
-                :price="goods[3].price"
-                :country="goods[3].country"
-                :img="goods[3].icon"
-              />
-              <product-card
-                ClassItem="shop__item"
-                :name="goods[4].name"
-                :price="goods[4].price"
-                :country="goods[4].country"
-                :img="goods[4].icon"
-              />
-              <product-card
-                ClassItem="shop__item"
-                :name="goods[5].name"
-                :price="goods[5].price"
-                :country="goods[5].country"
-                :img="goods[5].icon"
-              />
+             
             </div>
           </div>
         </div>
@@ -103,11 +71,12 @@ import ProductCard from "@/components/ProductCard.vue";
 import TitleItem from "@/components/TitleItem.vue";
 export default {
   components: {
-    ProductCard, TitleItem
+    ProductCard,
+    TitleItem,
   },
   data() {
     return {
-      title:'For your pleasure',
+      title: "For your pleasure",
       goods: [
         {
           id: 0,
