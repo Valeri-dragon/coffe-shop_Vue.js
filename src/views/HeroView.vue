@@ -9,7 +9,7 @@
         </div>
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
-            <title-item :title="title"/>
+            <title-item :title="title" />
             <img
               class="beanslogo"
               src="@/assets/logo/Beans_logo.svg"
@@ -19,8 +19,14 @@
               We makes every day full of energy and taste
             </div>
             <div class="preview__subtitle">Want to try our beans?</div>
-            <router-link to="/our-coffee" class="preview__btn"
+            <!-- <router-link to="/our-coffee" class="preview__btn" @click.prevent="smoothScroll"
               >More</router-link
+            > -->
+            <a
+              href="/our-coffee"
+              class="preview__btn"
+              @click.prevent="smoothScroll"
+              >More</a
             >
           </div>
         </div>
@@ -55,21 +61,21 @@
         </div>
       </div>
     </section>
-    <section class="best">
+    <section class="best" id="best_coffee" ref="best_coffee">
       <div class="container">
         <div class="title">Our best</div>
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
-              <product-card v-for='bestSeller in bestSellers'
-              :key="bestSeller.id"
-              ClassItem="best__item"
+              <product-card
+                v-for="bestSeller in bestSellers"
+                :key="bestSeller.id"
+                ClassItem="best__item"
                 :name="bestSeller.name"
                 :price="bestSeller.price"
                 :country="bestSeller.country"
                 :img="bestSeller.icon"
               />
-              
             </div>
           </div>
         </div>
@@ -81,14 +87,16 @@
 <script>
 import ProductCard from "@/components/ProductCard.vue";
 
-import TitleItem from '@/components/TitleItem.vue';
+import TitleItem from "@/components/TitleItem.vue";
+import { scrollIntoView } from "seamless-scroll-polyfill";
 export default {
   components: {
-    ProductCard, TitleItem
+    ProductCard,
+    TitleItem,
   },
   data() {
     return {
-      title:'Everything You Love About Coffee',
+      title: "Everything You Love About Coffee",
       bestSellers: [
         {
           id: 0,
@@ -110,6 +118,14 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    smoothScroll() {
+      scrollIntoView(this.$refs.best_coffee, {
+        behavior: "smooth",
+        block: "start",
+      });
+    },
   },
 };
 </script>
