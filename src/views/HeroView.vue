@@ -9,7 +9,7 @@
         </div>
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
-            <title-item :title="title" />
+            <title-item :title="bestSellers.title" />
             <img
               class="beanslogo"
               src="@/assets/logo/Beans_logo.svg"
@@ -68,7 +68,7 @@
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
               <product-card
-                v-for="bestSeller in bestSellers"
+                v-for="bestSeller in bestSellers.bestSellers"
                 :key="bestSeller.id"
                 ClassItem="best__item"
                 :name="bestSeller.name"
@@ -94,30 +94,10 @@ export default {
     ProductCard,
     TitleItem,
   },
-  data() {
-    return {
-      title: "Everything You Love About Coffee",
-      bestSellers: [
-        {
-          id: 0,
-          icon: "coffee-1.jpg",
-          name: "Solimo Coffee Beans 2kg",
-          price: 10.73,
-        },
-        {
-          id: 1,
-          icon: "coffee-2.jpg",
-          name: "Presto Coffee Beans 1kg",
-          price: 15.99,
-        },
-        {
-          id: 2,
-          icon: "coffee-3.jpg",
-          name: "AROMISTICO Coffee 1kg",
-          price: 6.99,
-        },
-      ],
-    };
+   computed: {
+    bestSellers() {
+      return this.$store.getters["getHero"];
+    },
   },
   methods: {
     smoothScroll() {

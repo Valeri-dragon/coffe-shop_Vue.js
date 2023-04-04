@@ -7,7 +7,7 @@
             <nav-bar-component />
           </div>
         </div>
-        <title-item :title="title" />
+        <title-item :title="goods.title" />
       </div>
     </div>
     <section class="shop">
@@ -49,13 +49,14 @@
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
               <product-card
-                v-for="good in goods"
+                v-for="good in goods.goods"
                 :key="good.id"
                 ClassItem="shop__item"
                 :name="good.name"
+                 :img="good.icon"
                 :price="good.price"
                 :country="good.country"
-                :img="good.icon"
+               
               />
              
             </div>
@@ -74,54 +75,10 @@ export default {
     ProductCard,
     TitleItem,
   },
-  data() {
-    return {
-      title: "For your pleasure",
-      goods: [
-        {
-          id: 0,
-          icon: "good-1.jpg",
-          name: "Solimo Coffee Beans 2kg",
-          country: "Brazil",
-          price: 10.73,
-        },
-        {
-          id: 1,
-          icon: "good-1.jpg",
-          name: "Presto Coffee Beans 1kg",
-          country: "Brazil",
-          price: 15.99,
-        },
-        {
-          id: 2,
-          icon: "good-1.jpg",
-          name: "AROMISTICO Coffee 1kg",
-          country: "Brazil",
-          price: 6.99,
-        },
-        {
-          id: 3,
-          icon: "good-1.jpg",
-          name: "Solimo Coffee Beans 2kg",
-          country: "Brazil",
-          price: 10.73,
-        },
-        {
-          id: 4,
-          icon: "good-1.jpg",
-          name: "Presto Coffee Beans 1kg",
-          country: "Brazil",
-          price: 15.99,
-        },
-        {
-          id: 5,
-          icon: "good-1.jpg",
-          name: "AROMISTICO Coffee 1kg",
-          country: "Brazil",
-          price: 6.99,
-        },
-      ],
-    };
+     computed: {
+    goods() {
+      return this.$store.getters["getGoods"];
+    },
   },
 };
 </script>
