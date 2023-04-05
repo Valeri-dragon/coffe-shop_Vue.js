@@ -7,7 +7,7 @@
             <nav-bar-component />
           </div>
         </div>
-        <title-item :title="ourCoffee.title"/>
+        <title-item :title="ourCoffee.title" />
       </div>
     </div>
     <section class="shop">
@@ -69,15 +69,14 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
-              <product-card v-for="coffe in ourCoffee.coffee"
-              :key="coffe.id"
-               ClassItem="shop__item"
-                :name="coffe.name"
-                :price="coffe.price"
-                :country="coffe.country"
-                :img="coffe.icon"
+              <product-card
+                v-for="card in ourCoffee.coffee"
+                :key="card.id"
+                classItem="shop__item"
+                :card="card"
+                @onNavigate="navigate"
               />
-              
+              <!-- /our-coffee/item -->
             </div>
           </div>
         </div>
@@ -88,15 +87,24 @@
 </template>
 <script>
 import ProductCard from "@/components/ProductCard.vue";
-import TitleItem from '@/components/TitleItem.vue';
+import TitleItem from "@/components/TitleItem.vue";
+import {navigate }from "../mixins/navigate"
 export default {
   components: {
-    ProductCard, TitleItem
+    ProductCard,
+    TitleItem,
   },
- computed: {
+  computed: {
     ourCoffee() {
       return this.$store.getters["getOurCoffee"];
     },
+   
   },
+  data(){
+    return{
+      name:'coffee'
+    }
+  },
+   mixins:[navigate]
 };
 </script>

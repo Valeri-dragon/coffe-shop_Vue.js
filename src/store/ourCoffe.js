@@ -4,42 +4,42 @@ const ourCoffee = {
     coffee: [
       {
         id: 0,
-        icon: "coffee-3.jpg",
+        img: "coffee-3.jpg",
         name: "Solimo Coffee Beans 2kg",
         country: "Brazil",
         price: 10.73,
       },
       {
         id: 1,
-        icon: "coffee-3.jpg",
+        img: "coffee-2.jpg",
         name: "Presto Coffee Beans 1kg",
         country: "Brazil",
         price: 15.99,
       },
       {
         id: 2,
-        icon: "coffee-3.jpg",
+        img: "coffee-1.jpg",
         name: "AROMISTICO Coffee 1kg",
         country: "Brazil",
         price: 6.99,
       },
       {
         id: 3,
-        icon: "coffee-3.jpg",
+        img: "coffee-3.jpg",
         name: "Solimo Coffee Beans 2kg",
         country: "Brazil",
         price: 10.73,
       },
       {
         id: 4,
-        icon: "coffee-3.jpg",
+        img: "coffee-2.jpg",
         name: "Presto Coffee Beans 1kg",
         country: "Brazil",
         price: 15.99,
       },
       {
         id: 5,
-        icon: "coffee-3.jpg",
+        img: "coffee-1.jpg",
         name: "AROMISTICO Coffee 1kg",
         country: "Brazil",
         price: 6.99,
@@ -47,12 +47,17 @@ const ourCoffee = {
     ],
   },
   getters: {
-    getOurCoffee(state){
-      return{
+    getOurCoffee(state) {
+      return {
         title: state.title,
-        coffee: state.coffee
-      }
-    }
+        coffee: state.coffee,
+      };
+    },
+    getCoffeeById(state) {
+      return (id) => {
+        return state.coffee.find((card) => card.id === +id);
+      };
+    },
   },
 };
-export default ourCoffee
+export default ourCoffee;

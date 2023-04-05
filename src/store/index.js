@@ -8,11 +8,11 @@ import ourCoffee from "./ourCoffe";
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-   modules:{
-links,
-hero,
-goods,
-ourCoffee
-  }
+  modules: {
+    links,
+    hero,
+    goods,
+    ourCoffee,
+  },
 });
-export default store
+export default store;

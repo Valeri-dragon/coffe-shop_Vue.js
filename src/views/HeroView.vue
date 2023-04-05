@@ -68,13 +68,10 @@
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
               <product-card
-                v-for="bestSeller in bestSellers.bestSellers"
-                :key="bestSeller.id"
-                ClassItem="best__item"
-                :name="bestSeller.name"
-                :price="bestSeller.price"
-                :country="bestSeller.country"
-                :img="bestSeller.icon"
+                v-for="card in bestSellers.bestSellers"
+                :key="card.id"
+                classItem="best__item"
+                :card="card"
               />
             </div>
           </div>
