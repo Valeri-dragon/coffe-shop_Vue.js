@@ -22,6 +22,16 @@ const hero = {
       },
     ],
   },
+  mutations: {
+    setBestSellersData(state, data) {
+      state.bestSellers = data;
+    },
+  },
+  actions: {
+    setBestSellersData({ commit }, data) {
+      commit("setBestSellersData", data);
+    },
+  },
   getters: {
     getHero(state) {
       return {

@@ -103,14 +103,14 @@
               </div>
 <div class="form-group row">
   <div class="form-check mb-2">
-    <input type="checkbox"  v-model="v$.privacy.$model"  name="privacy" id="Check" >
+    <input type="checkbox"  v-model="v$.privacy.$model"  name="privacy" id="Check" checked >
      <span v-for="error in v$.privacy.$errors" :key="error.$uid">{{
                     error.$message
                   }}</span>
 </div>
 
                 <div class="col col-12 col-sm-11 d-flex align-items-start">
-                  <label for="Check" class="mb-0"> Отправляя данные из формы, вы соглашаетесь с  
+                  <label for="Check" class="mb-0" > Отправляя данные из формы, вы соглашаетесь с  
                           <router-link :to="links.link">{{ links.text }}</router-link>    
       </label>
                 </div>
@@ -181,7 +181,7 @@ export default {
       },
       privacy: {required: helpers.withMessage(
           "Вы должны согласиться с офертой",
-          checked) }
+          checked)}
     };
   },
   computed: {links() {
@@ -193,12 +193,19 @@ export default {
       const isFormCorrect = await this.v$.$validate();
 
       if (!isFormCorrect) return;
-      console.log({
-        name: this.name,
+     const message={
+       name: this.name,
         email: this.email,
         phone: this.phone,
         text: this.text,
-      });
+     }
+     fetch('http://localhost:3000/contacts',{
+      method:'POST',
+headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(message)
+     })
         this.$refs.form.reset();
     },
     

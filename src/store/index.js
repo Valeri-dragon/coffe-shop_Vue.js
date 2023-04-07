@@ -6,6 +6,7 @@ import goods from "./goods";
 import hero from "./hero";
 import ourCoffee from "./ourCoffe";
 import privacy from "./privacy";
+import itemProduct from "./itemProduct";
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
@@ -14,7 +15,10 @@ const store = new Vuex.Store({
     hero,
     goods,
     ourCoffee,
-    privacy
+    privacy,
+    itemProduct
+   
   },
 });
+
 export default store;
