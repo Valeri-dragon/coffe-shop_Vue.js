@@ -10,6 +10,11 @@ const links = {
       link: "/",
       icon: "Logo_black.svg",
     },
+    privacy: {
+      id: 0,
+      text: "договором оферты",
+      link: "/privacy",
+    },
     other: [
       {
         id: 1,
@@ -28,18 +33,21 @@ const links = {
       },
     ],
   },
-   getters: {
+  getters: {
     getHeaderLinks(state) {
       return {
         header: state.header,
-        other: state.other
-      }
+        other: state.other,
+      };
     },
-    getFooterLinks(state){
+    getFooterLinks(state) {
       return {
         footer: state.footer,
-        other: state.other
-      }
+        other: state.other,
+      };
+    },
+    getPrivacyLinks(state){
+     return state.privacy 
     }
   },
 };

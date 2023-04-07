@@ -5,6 +5,7 @@ import links from "./links";
 import goods from "./goods";
 import hero from "./hero";
 import ourCoffee from "./ourCoffe";
+import privacy from "./privacy";
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
@@ -13,6 +14,7 @@ const store = new Vuex.Store({
     hero,
     goods,
     ourCoffee,
+    privacy
   },
 });
 export default store;

@@ -7,6 +7,7 @@ import GoodsPageView from "../views/GoodsPageView";
 import ContactsView from "../views/ContactsView";
 import ThankView from "../views/ThankView";
 import ProductPageView from "../views/ProductPageView";
+import PrivacyPageView from "../views/PrivacyPageView"
 
 Vue.use(VueRouter);
 const routes = [
@@ -30,14 +31,12 @@ const routes = [
     path: "/thank-you",
     component: ThankView,
   },
-  {name:'coffee',
-    path: "/our-coffee/:id",
-    component: ProductPageView,
+  {
+    path: "/privacy",
+    component: PrivacyPageView,
   },
-  {name:'goods',
-    path: "/for-your-pleasure/:id",
-    component: ProductPageView,
-  },
+  { name: "coffee", path: "/our-coffee/:id", component: ProductPageView },
+  { name: "goods", path: "/for-your-pleasure/:id", component: ProductPageView },
 ];
 
 const router = new VueRouter({
