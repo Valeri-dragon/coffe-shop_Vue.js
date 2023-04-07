@@ -101,24 +101,27 @@
                   }}</span>
                 </div>
               </div>
-<div class="form-group row">
-  <div class="form-check mb-2">
-    <input type="checkbox"  v-model="v$.privacy.$model"  name="privacy" id="Check" checked >
-     <span v-for="error in v$.privacy.$errors" :key="error.$uid">{{
+              <div class="form-group row">
+                <div class="form-check mb-2">
+                  <input
+                    type="checkbox"
+                    v-model="v$.privacy.$model"
+                    name="privacy"
+                    id="Check"
+                    checked
+                  />
+                  <span v-for="error in v$.privacy.$errors" :key="error.$uid">{{
                     error.$message
                   }}</span>
-</div>
-
-                <div class="col col-12 col-sm-11 d-flex align-items-start">
-                  <label for="Check" class="mb-0" > Отправляя данные из формы, вы соглашаетесь с  
-                          <router-link :to="links.link">{{ links.text }}</router-link>    
-      </label>
                 </div>
 
-</div>
-                      
-
-
+                <div class="col col-12 col-sm-11 d-flex align-items-start">
+                  <label for="Check" class="mb-0">
+                    Отправляя данные из формы, вы соглашаетесь с
+                    <router-link :to="links.link">{{ links.text }}</router-link>
+                  </label>
+                </div>
+              </div>
 
               <div class="row">
                 <div class="col">
@@ -136,21 +139,19 @@
   </main>
 </template>
 <script>
-
 import TitleItem from "@/components/TitleItem.vue";
 import { useVuelidate } from "@vuelidate/core";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
 import { helpers } from "@vuelidate/validators";
 import { minLengthCast } from "../validators/minLengthCast";
-import {checked} from "../validators/checked"
+import { checked } from "../validators/checked";
 import { lengthTextSubstr } from "../mixins/lengthTextSubstr";
-
 
 export default {
   setup() {
     return { v$: useVuelidate() };
   },
-  components: {  TitleItem },
+  components: { TitleItem },
   data() {
     return {
       title: "Contact us",
@@ -158,7 +159,7 @@ export default {
       email: "",
       phone: "",
       text: "",
-      privacy:true
+      privacy: true,
     };
   },
   validations() {
@@ -179,36 +180,40 @@ export default {
           maxLength(20)
         ),
       },
-      privacy: {required: helpers.withMessage(
+      privacy: {
+        required: helpers.withMessage(
           "Вы должны согласиться с офертой",
-          checked)}
+          checked
+        ),
+      },
     };
   },
-  computed: {links() {
-          return this.$store.getters["getPrivacyLinks"];
-    },},
+  computed: {
+    links() {
+      return this.$store.getters["getPrivacyLinks"];
+    },
+  },
   mixins: [lengthTextSubstr],
   methods: {
     async submit() {
       const isFormCorrect = await this.v$.$validate();
 
       if (!isFormCorrect) return;
-     const message={
-       name: this.name,
+      const message = {
+        name: this.name,
         email: this.email,
         phone: this.phone,
         text: this.text,
-     }
-     fetch('http://localhost:3000/contacts',{
-      method:'POST',
-headers: {
+      };
+      fetch("http://localhost:3000/contacts", {
+        method: "POST",
+        headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify(message)
-     })
-        this.$refs.form.reset();
+        body: JSON.stringify(message),
+      });
+      this.$refs.form.reset();
     },
-    
   },
 };
 </script>
