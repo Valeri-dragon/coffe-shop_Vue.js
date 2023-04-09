@@ -52,16 +52,27 @@
                 type="text"
                 placeholder="start typing here..."
                 class="shop__search-input"
+                @input="onSearch($event)"
               />
             </form>
           </div>
           <div class="col-lg-4">
             <div class="shop__filter">
               <div class="shop__filter-label">Or filter</div>
-              <div class="shop__filter-group">
+              <div
+                class="shop__filter-group"
+                @click="
+                  onSort(
+                    $event.target.textContent === 'Reset filter'
+                      ? ''
+                      : $event.target.textContent
+                  )
+                "
+              >
                 <button class="shop__filter-btn">Brazil</button>
                 <button class="shop__filter-btn">Kenya</button>
                 <button class="shop__filter-btn">Columbia</button>
+                <button class="shop__filter-btn mt-3">Reset filter</button>
               </div>
             </div>
           </div>
@@ -88,7 +99,8 @@
 <script>
 import ProductCard from "@/components/ProductCard.vue";
 import TitleItem from "@/components/TitleItem.vue";
-import {navigate }from "../mixins/navigate"
+import { navigate } from "../mixins/navigate";
+import { debounce } from "debounce";
 export default {
   components: {
     ProductCard,
@@ -98,20 +110,41 @@ export default {
     ourCoffee() {
       return this.$store.getters["getOurCoffee"];
     },
-   
+    searchValue: {
+      set(value) {
+        this.$store.dispatch("setSearchValue", value);
+      },
+      get() {
+        return this.$store.getters["getSearchValue"];
+      },
+    },
   },
-  data(){
-    return{
-      name:'coffee'
-    }
+  data() {
+    return {
+      name: "coffee",
+    };
   },
-   mixins:[navigate],
-   mounted(){
-fetch("http://localhost:3000/coffee")
-.then(res=>res.json())
-.then((data)=>{
-  this.$store.dispatch("setCoffeeData",data)
-})
-   }
+  mixins: [navigate],
+  mounted() {
+    fetch("http://localhost:3000/coffee")
+      .then((res) => res.json())
+      .then((data) => {
+        this.$store.dispatch("setCoffeeData", data);
+      });
+  },
+  methods: {
+    onSort(value) {
+      fetch(`http://localhost:3000/coffee?q=${value}`)
+        .then((res) => res.json())
+        .then((data) => {
+          this.$store.dispatch("setCoffeeData", data);
+        });
+    },
+    onSearch:debounce(function(event){
+
+      this.onSort(event.target.value)
+    
+    }, 500)
+  },
 };
 </script>

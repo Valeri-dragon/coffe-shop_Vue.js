@@ -32,17 +32,17 @@
               src="@/assets/logo/Beans_logo_dark.svg"
               alt="Beans logo"
             />
-            <div class="shop__point">
+            <div class="shop__point" v-if="product.country">
               <span>Country: </span>
               {{ product.country }}
             </div>
-            <div class="shop__point">
+            <div class="shop__point" v-if="product.description">
               <span>Description:</span>
             {{product.description}}
             </div>
             <div class="shop__point">
               <span>Price:</span>
-              <span class="shop__point-price" v-if="product">
+              <span class="shop__point-price" v-if="product.price">
                 {{ product.price}}</span
               >
             </div>
